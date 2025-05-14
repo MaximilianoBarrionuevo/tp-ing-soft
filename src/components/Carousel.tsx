@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { noticias } from "../data/noticias";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { useNoticias } from "../Context/NoticiasContext";
 
 export const Carousel = () => {
   const [index, setIndex] = useState(0);
+  const {noticias} = useNoticias()
 
   const next = () => setIndex((prev) => (prev + 1) % noticias.length);
   const prev = () => setIndex((prev) => (prev - 1 + noticias.length) % noticias.length);

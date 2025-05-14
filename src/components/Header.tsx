@@ -1,7 +1,7 @@
 import { useNoticias } from "../Context/NoticiasContext";
 
 export const Header = () => {
-  const { adminActive, setSesionModalVisible } = useNoticias()
+  const { adminActive, setSesionModalVisible, setFormVisible } = useNoticias()
   return (
     <header className="bg-white shadow-md px-6 py-4 flex items-center justify-between">
       <div className="flex items-center space-x-3">
@@ -16,6 +16,7 @@ export const Header = () => {
         {adminActive &&
           <button
             className="text-sm text-slate-700 hover:underline cursor-pointer"
+            onClick={() => setFormVisible(true)}
           >
             Crear Publicacion
           </button>

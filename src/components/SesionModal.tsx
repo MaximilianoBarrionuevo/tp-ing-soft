@@ -42,6 +42,7 @@ export default function SesionModal() {
                         <button
                             type="submit"
                             className="w-full bg-green-700 text-white p-2 rounded hover:bg-green-800 cursor-pointer"
+                            onClick={() => handleIniciarSesion(username, password)}
                         >
                             Ingresar
                         </button>

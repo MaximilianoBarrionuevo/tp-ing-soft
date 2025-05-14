@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { noticias } from "../data/noticias";
+import { useNoticias } from "../Context/NoticiasContext";
 
 export const NoticiaAccordion = () => {
 
@@ -8,6 +8,8 @@ export const NoticiaAccordion = () => {
   const toggle = (id: number) => {
     setActiveId(prev => (prev === id ? null : id));
   };
+
+  const {noticias} = useNoticias()
 
   return (
     <div className="w-[70%] mx-auto mt-8 space-y-4">

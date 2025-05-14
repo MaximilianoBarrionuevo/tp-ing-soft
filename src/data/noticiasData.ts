@@ -1,6 +1,6 @@
 import { Noticia } from "../types";
 
-export const noticias: Noticia[] = [
+export const noticiasData: Noticia[] = [
     {
         id: 1,
         titulo: "Nueva Jornada de Ecocanje",
