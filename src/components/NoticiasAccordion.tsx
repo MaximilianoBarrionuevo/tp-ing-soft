@@ -12,7 +12,7 @@ export const NoticiaAccordion = () => {
   const {noticias} = useNoticias()
 
   return (
-    <div className="w-[70%] mx-auto mt-8 space-y-4">
+    <div className="w-[55%] mx-auto mt-8 space-y-4">
       <h2 className="text-2xl font-bold text-center mb-4">Catálogo de Noticias</h2>
       {noticias.map(noticia => (
         <div

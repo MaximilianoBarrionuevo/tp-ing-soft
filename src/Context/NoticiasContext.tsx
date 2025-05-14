@@ -41,7 +41,7 @@ export const NoticiasProvider = ({ children }: { children: ReactNode }) => {
   const guardarNoticia = (nuevaNoticia: Omit<Noticia, "id" | "fechaPublicacion">) => {
     const nueva: Noticia = {
       ...nuevaNoticia,
-      id: Date.now(),
+      id: Date.now() + Math.floor(Math.random() *1000),
       fechaPublicacion: new Date().toISOString()
     };
 
