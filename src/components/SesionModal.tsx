@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNoticias } from "../Context/NoticiasContext";
 
 export default function SesionModal() {
-    const { handleIniciarSesion } = useNoticias();
+    const { handleIniciarSesion, setSesionModalVisible } = useNoticias();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -38,9 +38,21 @@ export default function SesionModal() {
                         onChange={(e) => setPassword(e.target.value)}
                         className="p-2 border rounded"
                     />
-                    <button type="submit" className="bg-green-700 text-white p-2 rounded hover:bg-green-800">
-                        Ingresar
-                    </button>
+                    <div className="flex w-full gap-x-5">
+                        <button
+                            type="submit"
+                            className="w-full bg-green-700 text-white p-2 rounded hover:bg-green-800 cursor-pointer"
+                        >
+                            Ingresar
+                        </button>
+                        <button
+                            type="submit"
+                            className="w-full bg-red-700 text-white p-2 rounded hover:bg-red-900 cursor-pointer"
+                            onClick={() => setSesionModalVisible(false)}
+                        >
+                            Cancelar
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
