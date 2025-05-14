@@ -12,7 +12,7 @@ export default function SesionModal() {
     };
 
     return (
-        <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50">
+        <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-[1000]">
             <div className="bg-white p-6 rounded-lg w-full max-w-2xl border border-gray-300 shadow-2xl grid justify-center">
                 <img
                     src="https://cepima.com.ar/wp-content/uploads/2021/09/Municipalidad-Malvinas-Argentinas.png"

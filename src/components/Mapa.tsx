@@ -52,7 +52,7 @@ const Mapa = () => {
     obtenerCoordenadas();
   }, [direcciones]);
 
-  const centro: [number, number] = [-34.6037, -58.3816];
+  const centro: [number, number] = [-34.4921029, -58.657449];
 
   return (
     <div className="w-[40%] h-96 rounded-md overflow-hidden p-1">
