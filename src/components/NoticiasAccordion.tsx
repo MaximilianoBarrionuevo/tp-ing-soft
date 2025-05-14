@@ -29,7 +29,7 @@ export const NoticiaAccordion = () => {
             <div className="px-4 py-3 bg-white border-t border-gray-200 space-y-2">
               {noticia.cuerpo && <p>{noticia.cuerpo}</p>}
               {noticia.fechaPublicacion && <p><strong>Fecha:</strong> {noticia.fechaPublicacion}</p>}
-              {noticia.tema && <p><strong>Tema:</strong> {noticia.tema}</p>}
+              {noticia.autor && <p><strong>Tema:</strong> {noticia.autor}</p>}
               {noticia.direccion && <p><strong>Dirección:</strong> {noticia.direccion}</p>}
               {noticia.imagenes && noticia.imagenes.length > 0 && (
                 <div className="grid grid-cols-2 gap-2">

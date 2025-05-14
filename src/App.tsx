@@ -2,17 +2,23 @@ import { Carousel } from './components/Carousel'
 import { CrearNoticiaForm } from './components/CrearNoticiaForm'
 import { Header } from './components/Header'
 import { NoticiaAccordion } from './components/NoticiasAccordion'
+import SesionModal from './components/SesionModal'
+import { useNoticias } from './Context/NoticiasContext'
 
 function App() {
+  const { formVisible, sesionModalVisible } = useNoticias()
 
   return (
     <>
-      <Header />
+      <Header/>
       <Carousel />
-      <div className='flex p-3 gap-x-5'>
-        <NoticiaAccordion />
-        <CrearNoticiaForm />
-      </div>
+      <NoticiaAccordion />
+      {formVisible &&
+        <CrearNoticiaForm/>
+      }
+      {sesionModalVisible && 
+        <SesionModal/>
+      }
     </>
   )
 }

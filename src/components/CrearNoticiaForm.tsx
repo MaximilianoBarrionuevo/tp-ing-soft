@@ -1,6 +1,13 @@
+import { useNoticias } from "../Context/NoticiasContext";
+
 export const CrearNoticiaForm = () => {
+    const {setFormVisible} = useNoticias()
+    const handleGuardarNoticia = () => {
+        setFormVisible(false)
+    }
     return (
-        <div className="w-[30%] mx-auto mt-8">
+        <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg w-full max-w-2xl border border-gray-300 shadow-2xl">
                 <form className="grid justify-center space-y-4 transition-all duration-300">
                     <div className="w-full flex justify-between gap-x-5">
                         <div className="w-full">
@@ -76,6 +83,7 @@ export const CrearNoticiaForm = () => {
                             <button
                                 type="submit"
                                 className="px-6 py-[10px] bg-green-600 text-sm text-white rounded-md hover:bg-green-700 cursor-pointer"
+                                onClick={() => handleGuardarNoticia()}
                             >
                                 Crear Noticia
                             </button>
@@ -83,6 +91,7 @@ export const CrearNoticiaForm = () => {
                     </div>
 
                 </form>
+            </div>
         </div>
     );
 };
