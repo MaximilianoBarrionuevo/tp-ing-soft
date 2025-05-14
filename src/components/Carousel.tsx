@@ -29,11 +29,11 @@ export const Carousel = () => {
       </div>
 
       <div className="absolute inset-0 flex items-center justify-between px-4">
-        <button onClick={prev} className="bg-white/80 hover:bg-white p-2 px-3 rounded-full shadow">
+        <button onClick={prev} className="bg-white/80 hover:bg-white p-2 px-3 rounded-full shadow cursor-pointer">
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
 
-        <button onClick={next} className="bg-white/80 hover:bg-white p-2 px-3 rounded-full shadow">
+        <button onClick={next} className="bg-white/80 hover:bg-white p-2 px-3 rounded-full shadow cursor-pointer">
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>

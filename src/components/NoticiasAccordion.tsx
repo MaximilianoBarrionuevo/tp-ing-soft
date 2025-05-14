@@ -14,6 +14,7 @@ export const NoticiaAccordion = () => {
   return (
     <div className="w-[55%] mx-auto mt-8 space-y-4">
       <h2 className="text-2xl font-bold text-center mb-4">Catálogo de Noticias</h2>
+      <div className="p-2 border rounded-md">Futuro Filtrador por nombre/fecha</div>
       {noticias.map(noticia => (
         <div
           key={noticia.id}
@@ -21,7 +22,7 @@ export const NoticiaAccordion = () => {
         >
           <button
             onClick={() => toggle(noticia.id)}
-            className="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 transition"
+            className="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 transition cursor-pointer"
           >
             <h3 className="text-lg font-semibold">{noticia.titulo}</h3>
             <p className="text-sm text-gray-600">{noticia.descripcion}</p>

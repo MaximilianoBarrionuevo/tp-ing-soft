@@ -55,7 +55,8 @@ const Mapa = () => {
   const centro: [number, number] = [-34.6037, -58.3816];
 
   return (
-    <div className="w-[40%] h-96 rounded-md overflow-hidden">
+    <div className="w-[40%] h-96 rounded-md overflow-hidden p-1">
+      <div className='p-2 border w-full rounded-md'>Futuro Buscador</div>
       <MapContainer center={centro} zoom={13} scrollWheelZoom={true} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
