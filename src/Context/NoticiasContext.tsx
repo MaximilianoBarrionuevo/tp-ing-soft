@@ -11,6 +11,9 @@ type NoticiasContextType = {
   setSesionModalVisible: React.Dispatch<React.SetStateAction<boolean>>
   noticias: Noticia[]
   guardarNoticia: (nuevaNoticia: Omit<Noticia, "id" | "fechaPublicacion">) => void
+  filtro: { tipo: "nombre" | "fecha"; valor: string };
+  setFiltro: React.Dispatch<React.SetStateAction<{ tipo: "nombre" | "fecha"; valor: string }>>;
+  noticiasFiltradas: Noticia[]
 };
 
 const NoticiasContext = createContext<NoticiasContextType | undefined>(undefined);
@@ -18,7 +21,7 @@ const NoticiasContext = createContext<NoticiasContextType | undefined>(undefined
 export const NoticiasProvider = ({ children }: { children: ReactNode }) => {
   const [adminActive, setAdminActive] = useState<boolean>(() => {
     return localStorage.getItem("adminActive") === "true";
-  });  
+  });
   const [sesionModalVisible, setSesionModalVisible] = useState(false)
   const [formVisible, setFormVisible] = useState(false);
   const [noticias, setNoticias] = useState<Noticia[]>(noticiasData)
@@ -41,7 +44,7 @@ export const NoticiasProvider = ({ children }: { children: ReactNode }) => {
   const guardarNoticia = (nuevaNoticia: Omit<Noticia, "id" | "fechaPublicacion">) => {
     const nueva: Noticia = {
       ...nuevaNoticia,
-      id: Date.now() + Math.floor(Math.random() *1000),
+      id: Date.now() + Math.floor(Math.random() * 1000),
       fechaPublicacion: new Date().toISOString()
     };
 
@@ -49,8 +52,25 @@ export const NoticiasProvider = ({ children }: { children: ReactNode }) => {
     setFormVisible(false);
   };
 
+  const [filtro, setFiltro] = useState<{ tipo: "nombre" | "fecha"; valor: string }>({
+    tipo: "nombre",
+    valor: ""
+  });
+
+  const noticiasFiltradas = noticias.filter((noticia) => {
+    if (filtro.tipo === "nombre") {
+      return noticia.titulo.toLowerCase().includes(filtro.valor.toLowerCase());
+    } else if (filtro.tipo === "fecha") {
+      const fecha = new Date(noticia.fechaPublicacion);
+      fecha.setDate(fecha.getDate() + 1)
+      const fechaFormateada = `${fecha.getFullYear()}/${String(fecha.getMonth() + 1).padStart(2, '0')}/${String(fecha.getDate()).padStart(2, '0')}`;
+      return fechaFormateada.includes(filtro.valor);
+    }
+    return true;
+  });
+
   return (
-    <NoticiasContext.Provider value={{ formVisible, setFormVisible, adminActive, handleIniciarSesion, sesionModalVisible, setSesionModalVisible, noticias, guardarNoticia }}>
+    <NoticiasContext.Provider value={{ formVisible, setFormVisible, adminActive, handleIniciarSesion, sesionModalVisible, setSesionModalVisible, noticias, guardarNoticia, filtro, setFiltro, noticiasFiltradas }}>
       {children}
     </NoticiasContext.Provider>
   );
