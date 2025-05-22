@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useNoticias } from '../Context/NoticiasContext';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Coordenada = {
   lat: number;
@@ -12,11 +12,6 @@ type Coordenada = {
 const Mapa = () => {
   const { noticias } = useNoticias();
   const [coordenadas, setCoordenadas] = useState<Coordenada[]>([]);
-
-  const direcciones = useMemo(
-    () => noticias.map((n) => n.direccion).filter(Boolean),
-    [noticias]
-  );
 
   useEffect(() => {
     const obtenerCoordenadas = async () => {
@@ -50,12 +45,13 @@ const Mapa = () => {
         setCoordenadas(coords);
       };      
     obtenerCoordenadas();
-  }, [direcciones]);
+  }, [noticias]);
 
   const centro: [number, number] = [-34.4921029, -58.657449];
 
   return (
     <div className="w-[40%] h-96 rounded-md overflow-hidden p-1">
+
       <MapContainer center={centro} zoom={13} scrollWheelZoom={true} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
